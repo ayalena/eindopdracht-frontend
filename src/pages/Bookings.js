@@ -1,25 +1,52 @@
 import React from 'react';
 import PageHeader from '../components/PageHeader';
-// import afspraak from '../assets/dentist.svg';
-import { Link } from 'react-router-dom';
+import Booking from "../components/Booking";
+import logo from '../assets/logo.png';
+import {useHistory} from "react-router-dom";
+import './Bookings.css';
 
-function AppointmentsPage() {
+
+function BookingPage() {
+    const history = useHistory();
+
+    function handleClick() {
+        history.push("/agenda")
+    }
+
     return (
         <div className="page-container">
-            <PageHeader /*icon={afspraak}*/ title="Appointments" />
-            <p className="colums-3">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi corporis cumque exercitationem minus optio, perferendis quos sunt.
-                Accusamus ad aliquid autem consequatur, eos ex excepturi illum impedit maiores molestias nam quod rem, voluptatibus. Mollitia, quidem voluptas?
-                Consectetur dolorem dolorum exercitationem iure magni molestias quaerat quas reprehenderit sit voluptates? Adipisci eius eveniet quas ullam!
-                Atque autem deserunt esse et fuga laudantium nostrum omnis repudiandae voluptates voluptatibus. At, corporis cupiditate dolor eligendi eos
-                exercitationem harum impedit maxime molestias neque perferendis praesentium, provident reprehenderit sapiente sequi voluptates voluptatum?
-                Debitis odio perferendis repellendus ullam vel? At beatae dolore dolorem nihil sed. Blanditiis consequatur consequuntur distinctio eum harum hic,
-                illo inventore mollitia nostrum quos repellendus sint vel voluptate. A ad animi doloremque doloribus ea enim et ipsam iure laboriosam libero natus,
-                neque nihil pariatur possimus quam quas quibusdam quidem quis quisquam tempore ut veritatis vitae. At autem blanditiis cum, dignissimos dolore
-                facere illo quis ullam vero. Cum deleniti dolorum earum et, explicabo facilis hic illo minima nisi obcaecati odio omnis porro rerum vel velit.
-                Autem cum delectus deserunt exercitationem, fugiat illum iste iusto natus nobis nostrum perferendis provident qui quos recusandae sapiente tempora
-                tempore unde, voluptas. Ab, deserunt est fugiat fugit ipsam saepe sint ullam?
-            </p>
+            <PageHeader
+                icon={logo}
+                title="Treatments" />
+            <main>
+                <Booking
+                    icon={logo}
+                    name="Acupuncture"
+                    cost="10$"
+                    description="This treatment consists of...."
+                />
+                <Booking
+                    icon={logo}
+                    name="Cupping"
+                    cost="10$"
+                    description="This treatment consists of...."
+                />
+                <Booking
+                    icon={logo}
+                    name="Combi Deal"
+                    cost="10$"
+                    description="This treatment consists of...."
+                />
+
+            </main>
+
+            <button
+                type="button"
+                onClick={handleClick}
+            >
+                Book!
+            </button>
+
             <p>
                 {/*Leer <Link to="/gaatjes">hier</Link> meer over gaatjes*/}
             </p>
@@ -27,4 +54,4 @@ function AppointmentsPage() {
     );
 }
 
-export default AppointmentsPage;
+export default BookingPage;

@@ -1,0 +1,11 @@
+body {
+    font-family: 'Cormorant Garamond', 'Arial', sans-serif;
+    background-color: #e6e6ee;
+    line-height: 1.5;
+    color: #8e0000;
+}
+
+p {
+    font-family: Arial, sans-serif;
+    margin: 16px 0;
+}
