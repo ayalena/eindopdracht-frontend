@@ -3,22 +3,5 @@
     padding: 0;
 }
 
-a,
-a:visited,
-a:hover {
-    color: white;
-    text-decoration: none;
-}
 
-.page-container {
-    width: 1000px;
-    margin: 60px auto;
-}
 
-.colums-3 {
-    column-count: 3;
-}
-
-.colums-2 {
-    column-count: 2;
-}

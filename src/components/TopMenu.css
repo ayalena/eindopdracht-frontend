@@ -31,4 +31,12 @@ li {
     color: #8e0000;
 }
 
+a,
+a:visited,
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+
 

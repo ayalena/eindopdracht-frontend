@@ -9,3 +9,16 @@ p {
     font-family: Arial, sans-serif;
     margin: 16px 0;
 }
+
+.colums-3 {
+    column-count: 3;
+}
+
+.colums-2 {
+    column-count: 2;
+}
+
+.page-container {
+    width: 1000px;
+    margin: 60px auto;
+}
