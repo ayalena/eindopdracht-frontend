@@ -1,7 +1,7 @@
 import React from "react";
-import Product from "../components/Product";
-import logo from '../assets/logo.png';
-import PageHeader from "../components/PageHeader";
+import Product from "../../components/Product/Product";
+import logo from '../../assets/logo.png';
+import PageHeader from "../../components/PageHeader/PageHeader";
 import './Products.css';
 
 

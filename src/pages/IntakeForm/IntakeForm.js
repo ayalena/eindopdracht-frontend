@@ -1,6 +1,6 @@
 import React from "react";
-import PageHeader from "../components/PageHeader";
-import logo from "../assets/logo.png";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import logo from "../../assets/logo.png";
 import {useForm} from "react-hook-form";
 import './IntakeForm.css';
 

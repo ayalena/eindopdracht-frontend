@@ -1,7 +1,7 @@
 import React from 'react';
-import PageHeader from '../components/PageHeader';
-import Booking from "../components/Booking";
-import logo from '../assets/logo.png';
+import PageHeader from '../../components/PageHeader/PageHeader';
+import Booking from "../../components/Booking/Booking";
+import logo from '../../assets/logo.png';
 import {useHistory} from "react-router-dom";
 import './Bookings.css';
 

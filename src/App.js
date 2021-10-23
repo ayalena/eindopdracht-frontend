@@ -1,13 +1,13 @@
 import React from 'react';
 
-import TopMenu from './components/TopMenu';
-import HomePage from './pages/Home';
-import AboutPage from './pages/About';
-import ProductPage from './pages/Products';
-import ContactPage from './pages/Contact';
-import BookingPage from './pages/Bookings';
-import AgendaPage from './pages/Agenda';
-import IntakeFormPage from './pages/IntakeForm';
+import TopMenu from './components/TopMenu/TopMenu';
+import HomePage from './pages/Home/Home';
+import AboutPage from './pages/About/About';
+import ProductPage from './pages/Products/Products';
+import ContactPage from './pages/Contact/Contact';
+import BookingPage from './pages/Bookings/Bookings';
+import AgendaPage from './pages/Agenda/Agenda';
+import IntakeFormPage from './pages/IntakeForm/IntakeForm';
 
 import './App.css';
 

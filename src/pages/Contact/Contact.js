@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from 'react-hook-form'
-import PageHeader from "../components/PageHeader";
-import logo from "../assets/logo.png";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import logo from "../../assets/logo.png";
 import './Contact.css';
 
 

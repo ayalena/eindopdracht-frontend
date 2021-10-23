@@ -1,7 +1,7 @@
 import React from "react";
-import PageHeader from "../components/PageHeader";
-import logo from "../assets/logo.png";
-import TimeSlot from "../components/TimeSlot";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import logo from "../../assets/logo.png";
+import TimeSlot from "../../components/TimeSlot/TimeSlot";
 import {useHistory} from "react-router-dom";
 import './Agenda.css';
 

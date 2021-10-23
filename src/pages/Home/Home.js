@@ -1,6 +1,6 @@
 import React from 'react';
-import PageHeader from '../components/PageHeader';
-import logo from '../assets/logo.png';
+import PageHeader from '../../components/PageHeader/PageHeader';
+import logo from '../../assets/logo.png';
 import {Link, useHistory} from 'react-router-dom';
 import './Home.css';
 
