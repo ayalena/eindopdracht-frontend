@@ -3,5 +3,17 @@
     padding: 0;
 }
 
+html, body {
+    height: 100%;
+}
 
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background-color: #ffffff;
+    line-height: 1.5;
+    color: #8e0000;
+}
 
+p {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}

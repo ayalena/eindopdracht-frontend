@@ -2,7 +2,7 @@
 
 nav {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     height: 60px;
@@ -11,24 +11,24 @@ nav {
 .nav-container {
     width: 1000px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 ul {
     list-style-type: none;
-    flex-basis: 550px;
+    flex-basis: 1000px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 .active-link {
-    border-bottom: 2px solid #8e0000;
+    border-bottom: 2px solid #050505;
 }
 
 li {
-    color: #8e0000;
+    color: #050505;
 }
 
 a,
