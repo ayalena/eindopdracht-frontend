@@ -13,24 +13,25 @@ function Agenda() {
         history.push("/intake-form")
     }
 
-    const [week, setWeek] = useState([]);
-    const [offsetNumber, setOffsetNumber] = useState(0);
+    const [appointments, setAppointments] = useState([]);
+
+    // const [offsetNumber, setOffsetNumber] = useState(0);
 
     useEffect(() => {
-        async function fetchWeek() {
+        async function fetchAppointments() {
             try {
                 //method to get days of the week
                 const result = await axios.get(`http://localhost:8080/agenda`);
                 console.log(result.data);
-                setWeek(result.data);
+                setAppointments(result.data);
             } catch (e) {
                 console.error(e);
             }
         }
-        fetchWeek();
+        fetchAppointments();
     }, []);
 
-    console.log(week)
+    console.log(appointments)
 
     // function handleNextWeek() {
     //     setOffsetNumber(offsetNumber + 7);
@@ -65,6 +66,7 @@ function Agenda() {
         <>
             <PageHeader icon={logo} title="Agenda"/>
             <main>
+
                 {/*Button should trigger so that the current date is adjusted to that of the last week, as well as the time slots. If the date is set on the current week, this button should be disabled/invisible*/}
                 {/*<button*/}
                 {/*    type="button"*/}
@@ -74,55 +76,16 @@ function Agenda() {
                 {/*    Last week*/}
                 {/*</button>*/}
 
-                {/*<p>*/}
-                {/*    {week}*/}
-                {/*</p>*/}
-
-                <TimeSlot
-                    icon={logo}
-                    day="Monday"
-                    date="{week[0].dateOfAppointment}"
-                    time="{week[0].timeOfAppointment}"
-
-
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Tuesday"
-                    date="Current date: "
-                    time="Available timeslots: "
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Wednesday"
-                    date="Current date: "
-                    time="Available timeslots: "
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Thursday"
-                    date="Current date: "
-                    time="Available timeslots: "
-
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Friday"
-                    date="Current date: "
-                    time="Available timeslots: "
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Saturday"
-                    date="Current date: "
-                    time="Available timeslots: "
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Sunday"
-                    date="Current date: "
-                    time="Available timeslots: "
-                />
+                <div className="appointment-container">
+                    {appointments.map((appointment) => {
+                        return <TimeSlot
+                            day="slot"
+                            date={appointment.dateOfAppointment}
+                            time={appointment.timeOfAppointment}
+                        />;
+                    })
+                    }
+                </div>
 
                 {/*Button should trigger so that the current date is adjusted to that of the next week, as well as the time slots*/}
                 {/*<button*/}

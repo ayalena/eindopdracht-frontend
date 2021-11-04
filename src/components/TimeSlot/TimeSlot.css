@@ -1,4 +1,10 @@
-.timeslot {
+/*.timeslot {*/
+/*    margin: 10px;*/
+/*    border: 1px solid #8e0000;*/
+/*    text-align: center;*/
+/*}*/
+
+.timeslot-container {
     margin: 10px;
     border: 1px solid #8e0000;
     text-align: center;
