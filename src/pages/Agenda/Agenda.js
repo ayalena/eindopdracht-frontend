@@ -76,7 +76,10 @@ function Agenda() {
                 {/*    Last week*/}
                 {/*</button>*/}
 
-                <div className="appointment-container">
+                <div
+                    className="appointment-container"
+
+                >
                     {appointments.map((appointment) => {
                         return <TimeSlot
                             day="slot"

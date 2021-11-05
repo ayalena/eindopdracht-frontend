@@ -9,3 +9,7 @@
     border: 1px solid #8e0000;
     text-align: center;
 }
+
+.timeslot-container:hover {
+    background-color: #e16565;
+}
