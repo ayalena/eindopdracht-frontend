@@ -8,6 +8,8 @@ import ContactPage from './pages/Contact/Contact';
 import BookingPage from './pages/Bookings/Bookings';
 import AgendaPage from './pages/Agenda/Agenda';
 import IntakeFormPage from './pages/IntakeForm/IntakeForm';
+import SignInPage from "./pages/SignIn/SignIn";
+import SignUpPage from "./pages/SignUp/SignUp";
 
 import './App.css';
 
@@ -16,6 +18,7 @@ import {
     Switch,
     Route,
 } from 'react-router-dom';
+
 
 function App() {
     return (
@@ -42,6 +45,12 @@ function App() {
                 </Route>
                 <Route path="/intake-form">
                     <IntakeFormPage/>
+                </Route>
+                <Route exact path="/signin">
+                    <SignInPage />
+                </Route>
+                <Route exact path="/signup">
+                    <SignUpPage />
                 </Route>
             </Switch>
         </Router>

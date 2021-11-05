@@ -10,7 +10,7 @@ function Agenda() {
     const history = useHistory();
 
     function handleClick() {
-        history.push("/intake-form")
+        history.push("/signup")
     }
 
     const [appointments, setAppointments] = useState([]);

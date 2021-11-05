@@ -16,7 +16,7 @@ function HomePage() {
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut debitis doloribus facilis iste placeat praesentium sint voluptatem. Architecto at, maiores?
             </p>
-            <p className="colums-2">
+            <p className="columns-2">
                 Consectetur adipisicing elit. Blanditiis cum, dolor ea enim fugiat fugit id inventore ipsam libero
                 magni
                 modi natus
