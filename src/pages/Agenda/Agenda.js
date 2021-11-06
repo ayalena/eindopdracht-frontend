@@ -5,17 +5,22 @@ import TimeSlot from "../../components/TimeSlot/TimeSlot";
 import {useHistory} from "react-router-dom";
 import './Agenda.css';
 import axios from "axios";
+import {useForm} from "react-hook-form";
 
 function Agenda() {
     const history = useHistory();
+    const {register, handleSubmit, formState: {errors}, watch} = useForm();
+    const [appointments, setAppointments] = useState([]);
+    // const [offsetNumber, setOffsetNumber] = useState(0);
 
-    function handleClick() {
+    // function handleClick() {
+    //     history.push("/signup")
+    // }
+
+    function onFormSubmit(data) {
+        console.log(data);
         history.push("/signup")
     }
-
-    const [appointments, setAppointments] = useState([]);
-
-    // const [offsetNumber, setOffsetNumber] = useState(0);
 
     useEffect(() => {
         async function fetchAppointments() {
@@ -28,6 +33,7 @@ function Agenda() {
                 console.error(e);
             }
         }
+
         fetchAppointments();
     }, []);
 
@@ -76,35 +82,40 @@ function Agenda() {
                 {/*    Last week*/}
                 {/*</button>*/}
 
-                <div
-                    className="appointment-container"
+                <form onSubmit={handleSubmit(onFormSubmit)}>
+                    <div className="appointment-container">
 
-                >
-                    {appointments.map((appointment) => {
-                        return <TimeSlot
-                            day="slot"
-                            date={appointment.dateOfAppointment}
-                            time={appointment.timeOfAppointment}
-                        />;
-                    })
-                    }
-                </div>
+                            <label htmlFor="appointment">Select a date and time:</label>
 
-                {/*Button should trigger so that the current date is adjusted to that of the next week, as well as the time slots*/}
-                {/*<button*/}
-                {/*    type="button"*/}
-                {/*    onClick={handleNextWeek}*/}
-                {/*>*/}
-                {/*    Next week*/}
-                {/*</button>*/}
+
+                        {appointments.map((appointment) => {
+                            return <TimeSlot
+                                register={register}
+                                day="slot"
+                                date={appointment.dateOfAppointment}
+                                time={appointment.timeOfAppointment}
+                            />;
+                        })
+                        }
+
+                    </div>
+
+                    {/*Button should trigger so that the current date is adjusted to that of the next week, as well as the time slots*/}
+                    {/*<button*/}
+                    {/*    type="button"*/}
+                    {/*    onClick={handleNextWeek}*/}
+                    {/*>*/}
+                    {/*    Next week*/}
+                    {/*</button>*/}
+
+                    <button
+                        type="submit"
+                        // onClick={handleClick}
+                    >
+                        Continue
+                    </button>
+                </form>
             </main>
-
-            <button
-                type="button"
-                onClick={handleClick}
-            >
-                Continue
-            </button>
         </>
     );
 }

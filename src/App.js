@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import TopMenu from './components/TopMenu/TopMenu';
 import HomePage from './pages/Home/Home';
@@ -16,11 +16,15 @@ import './App.css';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
+    Route, Redirect,
 } from 'react-router-dom';
+
+import {AuthContext} from "./context/AuthContext";
 
 
 function App() {
+    const {isAuth} = useContext(AuthContext);
+
     return (
         <Router>
             <TopMenu/>
@@ -41,7 +45,7 @@ function App() {
                     <BookingPage/>
                 </Route>
                 <Route path="/agenda">
-                    <AgendaPage/>
+                    {isAuth ? <AgendaPage/> : <Redirect to="/signup"/>}
                 </Route>
                 <Route path="/intake-form">
                     <IntakeFormPage/>
