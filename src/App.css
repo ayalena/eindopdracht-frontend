@@ -7,6 +7,20 @@ html, body {
     height: 100%;
 }
 
+/*tablets*/
+@media screen and (min-width: 768px) {
+    p {
+        font-size: 14px;
+    }
+}
+
+/*small computer screens*/
+@media screen and (min-width: 992px) {
+    p {
+        font-size: 16px;
+    }
+}
+
 body {
     font-family: 'Segoe UI', 'Arial', sans-serif;
     background-color: #ffffff;

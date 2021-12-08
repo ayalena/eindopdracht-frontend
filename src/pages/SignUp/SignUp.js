@@ -76,8 +76,9 @@ function SignUpPage() {
                     </button>
 
                 </form>
+                <p>If you already have an account, you can log in <Link to="/signin">here</Link></p>
             </div>
-            <p>If you already have an account, you can log in <Link to="/signin">here</Link></p>
+
         </>
     );
 }

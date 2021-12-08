@@ -12,17 +12,13 @@ function HomePage() {
     }
     return (
         <div className="page-container">
-            <PageHeader icon={logo} title="Acupuncture By Kim"/>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut debitis doloribus facilis iste placeat praesentium sint voluptatem. Architecto at, maiores?
-            </p>
+            <PageHeader title="Acupuncture By Kim"/>
+            {/*<p>*/}
+            {/*    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut debitis doloribus facilis iste placeat praesentium sint voluptatem. Architecto at, maiores?*/}
+            {/*</p>*/}
             <p className="columns-2">
-                Consectetur adipisicing elit. Blanditiis cum, dolor ea enim fugiat fugit id inventore ipsam libero
-                magni
-                modi natus
-                necessitatibus nisi optio quas qui quis quo, reprehenderit saepe similique sint sit soluta ut
-                veritatis
-                voluptatem.
+                Acupuncture by Kim was founded in XXXX by Kim Tran. Kim studied at XXXX and has mastered the art of acupuncture. ABK's vision is to make acupuncture available to everyone.
+
                 Ab aliquid amet animi aperiam assumenda, atque autem dolorum ducimus et excepturi ipsa magnam nemo
                 nulla
                 possimus provident,
@@ -41,10 +37,10 @@ function HomePage() {
                 odit perspiciatis placeat
                 provident quos, similique sit totam vero. Beatae consequatur cupiditate rerum?
             </p>
-            <p>Learn more about Acupuncture By Kim <Link to="/about">here</Link></p>
+            {/*<p>Learn more about Acupuncture By Kim <Link to="/about">here</Link></p>*/}
 
             <button type="button" onClick={handleClick}>
-                Make an appointment!
+                BOOK NOW!
             </button>
 
         </div>
