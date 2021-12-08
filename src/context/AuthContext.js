@@ -77,8 +77,8 @@ function AuthContextProvider ({ children }) {
         const decoded = jwt_decode(token);
         localStorage.setItem('token', token);
         console.log(decoded);
-        getUserDetails(token, decoded, "/profile");
-        console.log("Gebruiker is ingelogd!");
+        getUserDetails(token, decoded, "/agenda");
+        console.log("User logged in");
     }
 
     function logOut() {
@@ -90,17 +90,18 @@ function AuthContextProvider ({ children }) {
             isAuth: false,
             user: "null",
         });
-        console.log("Gebruiker is uitgelogd!");
+        console.log("User logged out");
         history.push("/");
     }
 
     //wikkel een provider jasje eromheen met als value het data object
     return (
         <AuthContext.Provider value={data}>
-            {isAuth.status === 'pending'
-                ? <p>Loading...</p>
-                : children
-            }
+            {/*{isAuth.status === 'pending'*/}
+            {/*    ? <p>Loading...</p>*/}
+            {/*    : children*/}
+            {/*}*/}
+            {children}
         </AuthContext.Provider>
     )
 

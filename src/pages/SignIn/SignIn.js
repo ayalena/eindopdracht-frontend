@@ -1,11 +1,15 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import './SignIn.css';
-import {Link} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
+import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
 
 function SignInPage() {
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
+    const {logIn} = useContext(AuthContext);
+    const history = useHistory();
+
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -15,11 +19,13 @@ function SignInPage() {
                 password: passwordValue,
             })
             console.log(result.data);
+            logIn(result.data.accessToken);
+            history.push("/agenda");
         } catch (e) {
             console.error(e);
         }
-
     }
+
 
     return (
         <>
@@ -59,7 +65,7 @@ function SignInPage() {
                 </form>
             </div>
 
-            <p>If you don't have an account yet. you can register <Link to="/signup">here</Link></p>
+            <p>If you don't have an account yet, you can register <Link to="/signup">here</Link></p>
         </>
     );
 }

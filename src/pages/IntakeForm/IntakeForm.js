@@ -8,7 +8,9 @@ import './IntakeForm.css';
 function IntakeForm() {
     const {register, handleSubmit, formState: {errors}, watch} = useForm();
 
+
     function onFormSubmit(data) {
+        //POST METHODE NAAR BACKEND
         console.log(data);
     }
 

@@ -10,6 +10,8 @@ import AgendaPage from './pages/Agenda/Agenda';
 import IntakeFormPage from './pages/IntakeForm/IntakeForm';
 import SignInPage from "./pages/SignIn/SignIn";
 import SignUpPage from "./pages/SignUp/SignUp";
+import ThanksPage from "./pages/Thanks/Thanks";
+
 
 import './App.css';
 
@@ -55,6 +57,9 @@ function App() {
                 </Route>
                 <Route exact path="/signup">
                     <SignUpPage />
+                </Route>
+                <Route exact path="/thanks">
+                    <ThanksPage />
                 </Route>
             </Switch>
         </Router>

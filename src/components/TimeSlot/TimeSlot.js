@@ -1,11 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import './TimeSlot.css';
-import axios from "axios";
-import {useForm} from "react-hook-form";
 
 
 function TimeSlot({day, date, time, register}) {
-    // const {register, handleSubmit, formState: {errors}, watch} = useForm();
 
     return (
         <>

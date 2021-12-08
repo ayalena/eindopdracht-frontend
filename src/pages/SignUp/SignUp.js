@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import './SignUp.css';
 import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
@@ -9,6 +9,7 @@ function SignUpPage() {
     const [passwordValue, setPasswordValue] = useState('');
     const [usernameValue, setUsernameValue] = useState('');
     const history = useHistory();
+
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -24,6 +25,7 @@ function SignUpPage() {
             console.error(e);
         }
     }
+
 
     return (
         <>
@@ -72,7 +74,6 @@ function SignUpPage() {
                     >
                         Register
                     </button>
-
 
                 </form>
             </div>
