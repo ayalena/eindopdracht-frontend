@@ -18,8 +18,8 @@ function Products() {
             <div className="big-container">
 
                 <div className="description-container">
-                    <img src={image1} className="image1"/>
-                    <article>ABK has created multiple healthy tea blends to help boost your immune system.
+                    <img src={image1} className="image1 item-a"/>
+                    <article className="item item-b">ABK has created multiple healthy tea blends to help boost your immune system.
 
                         Ab aliquid amet animi aperiam assumenda, atque autem dolorum ducimus et excepturi ipsa magnam
                         nemo
@@ -29,11 +29,11 @@ function Products() {
                         impedit
                         obcaecati quis repudiandae!
                     </article>
-                    <img src={image2} className="image2"/>
+                    <img src={image2} className="image2 item-c"/>
                 </div>
 
 
-                <div className="products-container">
+                <div className="products-container item-d">
                     <Product
                         icon={blend1}
                         name="Herb mix 1"

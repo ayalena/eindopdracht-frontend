@@ -5,11 +5,15 @@ import background from "../../assets/abkheader.png";
 
 function TopMenu() {
     return (
-        <nav>
+        <>
             <div
+                className="nav-container"
                 style={{ backgroundImage: `url(${background})` }}
-                className="nav-container">
+
+                >
                 {/*<h4>Acupuncture By Kim</h4>*/}
+
+
 
                 <ul>
                     <NavLink to="/" exact activeClassName="active-link">
@@ -39,7 +43,7 @@ function TopMenu() {
                     </NavLink>
                 </ul>
             </div>
-        </nav>
+        </>
     );
 }
 

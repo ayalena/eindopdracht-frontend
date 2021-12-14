@@ -1,14 +1,37 @@
 .big-container {
-    display: flex;
-    flex-direction: column;
+    /*display: flex;*/
+    /*flex-direction: column;*/
     margin-top: 275px;
 
+    display: grid;
+    grid-template-columns: 140px 140px 140px;
+    grid-template-rows: 140px 140px;
+    grid-gap: 16px;
+    grid-template-areas:
+       "a a b"
+       "c d b";
 }
 
-.description-container {
-    display: flex;
-
+.item-a {
+    grid-area: a;
 }
+
+.item-b {
+    grid-area: b;
+}
+
+.item-c {
+    grid-area: c;
+}
+
+.item-d {
+    grid-area: d;
+}
+
+/*.description-container {*/
+/*    display: flex;*/
+
+/*}*/
 
 .products-container {
     display: flex;
