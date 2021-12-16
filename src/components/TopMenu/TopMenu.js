@@ -8,7 +8,7 @@ function TopMenu() {
         <>
             <div
                 className="nav-container"
-                style={{ backgroundImage: `url(${background})` }}
+                // style={{ backgroundImage: `url(${background})` }}
 
                 >
                 {/*<h4>Acupuncture By Kim</h4>*/}

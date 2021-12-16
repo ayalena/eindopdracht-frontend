@@ -3,6 +3,8 @@ import './SignIn.css';
 import {AuthContext} from "../../context/AuthContext";
 import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import logo from "../../assets/logo-with-name.png";
 
 function SignInPage() {
     const [emailValue, setEmailValue] = useState('');
@@ -29,11 +31,14 @@ function SignInPage() {
 
     return (
         <>
-            <h1>Log in</h1>
+        <form onSubmit={handleSubmit}>
+            <div className="form-container">
+                <PageHeader icon={logo} title="Login"/>
+
             <p>Please fill in your details below</p>
 
-            <div className="form-container">
-                <form onSubmit={handleSubmit}>
+
+
 
                     <div>
                         <label htmlFor="email"> E-mail: </label>
@@ -59,13 +64,16 @@ function SignInPage() {
 
                     <button
                         type="submit"
+                        className="login-button"
                     >
                         Log in
                     </button>
-                </form>
-            </div>
+
+
 
             <p>If you don't have an account yet, you can register <Link to="/signup">here</Link></p>
+            </div>
+        </form>
         </>
     );
 }

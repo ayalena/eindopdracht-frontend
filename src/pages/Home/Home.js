@@ -1,6 +1,6 @@
 import React from 'react';
 import PageHeader from '../../components/PageHeader/PageHeader';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo-with-name.png';
 import {Link, useHistory} from 'react-router-dom';
 import './Home.css';
 
@@ -12,7 +12,7 @@ function HomePage() {
     }
     return (
         <div className="page-container">
-            <PageHeader title="Acupuncture By Kim"/>
+            <PageHeader icon={logo} title="Acupuncture By Kim"/>
             {/*<p>*/}
             {/*    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut debitis doloribus facilis iste placeat praesentium sint voluptatem. Architecto at, maiores?*/}
             {/*</p>*/}

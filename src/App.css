@@ -7,6 +7,17 @@ html, body {
     height: 100%;
 }
 
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background-color: #ffffff;
+    line-height: 1.5;
+    color: #8e0000;
+}
+
+p {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
 /*tablets*/
 @media screen and (min-width: 768px) {
     p {
@@ -19,15 +30,4 @@ html, body {
     p {
         font-size: 16px;
     }
-}
-
-body {
-    font-family: 'Segoe UI', 'Arial', sans-serif;
-    background-color: #ffffff;
-    line-height: 1.5;
-    color: #8e0000;
-}
-
-p {
-    font-family: 'Segoe UI', 'Arial', sans-serif;
 }

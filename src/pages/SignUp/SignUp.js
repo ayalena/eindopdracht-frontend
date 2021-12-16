@@ -2,7 +2,8 @@ import React, {useContext, useState} from "react";
 import './SignUp.css';
 import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
-
+import PageHeader from "../../components/PageHeader/PageHeader";
+import logo from "../../assets/logo-with-name.png"
 
 function SignUpPage() {
     const [emailValue, setEmailValue] = useState('');
@@ -29,12 +30,12 @@ function SignUpPage() {
 
     return (
         <>
-            <div className="form-container">
+            <form onSubmit={handleSubmit}>
+                <div className="form-container">
 
-                <h1>Register</h1>
-                <p>To book an appointment, please register!</p>
+                    <PageHeader icon={logo} title="Register"/>
+                    <p>To book an appointment, please register!</p>
 
-                <form onSubmit={handleSubmit}>
 
                     <div>
                         <label htmlFor="email"> E-mail: </label>
@@ -71,14 +72,15 @@ function SignUpPage() {
 
                     <button
                         type="submit"
+                        className="register-button"
                     >
                         Register
                     </button>
 
-                </form>
-                <p>If you already have an account, you can log in <Link to="/signin">here</Link></p>
-            </div>
 
+                    <p>If you already have an account, you can log in <Link to="/signin">here</Link></p>
+                </div>
+            </form>
         </>
     );
 }

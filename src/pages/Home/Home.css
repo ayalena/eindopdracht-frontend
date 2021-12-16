@@ -21,7 +21,7 @@ p {
 .page-container {
     width: 1000px;
     margin: 60px auto;
-    margin-top: 275px;
+    /*margin-top: 275px;*/
 }
 
 button {

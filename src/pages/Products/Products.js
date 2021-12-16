@@ -1,6 +1,6 @@
 import React from "react";
 import Product from "../../components/Product/Product";
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo-with-name.png';
 import PageHeader from "../../components/PageHeader/PageHeader";
 import './Products.css';
 import image1 from "../../assets/abk1.jpg";
@@ -14,26 +14,37 @@ function Products() {
 
     return (
         <>
-            <PageHeader title="Tea Blends"/>
+            <PageHeader icon={logo} title="Tea Blends"/>
             <div className="big-container">
 
                 <div className="description-container">
-                    <img src={image1} className="image1 item-a"/>
-                    <article className="item item-b">ABK has created multiple healthy tea blends to help boost your immune system.
+                    <div><img src={image1} className="image1"/></div>
+                    <div>
+                        <article>ABK has created multiple healthy tea blends to help boost your
+                            immune system.
 
-                        Ab aliquid amet animi aperiam assumenda, atque autem dolorum ducimus et excepturi ipsa magnam
-                        nemo
-                        nulla
-                        possimus provident,
-                        quos ratione repellendus sed sequi tempore! Accusantium amet commodi deleniti exercitationem
-                        impedit
-                        obcaecati quis repudiandae!
-                    </article>
-                    <img src={image2} className="image2 item-c"/>
+                            Ab aliquid amet animi aperiam assumenda, atque autem dolorum ducimus et excepturi ipsa
+                            magnam
+                            nemo
+                            nulla
+                            possimus provident,
+                            quos ratione repellendus sed sequi tempore! Accusantium amet commodi deleniti exercitationem
+                            impedit
+                            obcaecati quis repudiandae!
+                            Ab aliquid amet animi aperiam assumenda, atque autem dolorum ducimus et excepturi ipsa
+                            magnam nemo
+                            nulla
+                            possimus provident,
+                            quos ratione repellendus sed sequi tempore! Accusantium amet commodi deleniti exercitationem
+                            impedit
+                            obcaecati quis repudiandae!
+                        </article>
+                    </div>
+                    <div><img src={image2} className="image2"/></div>
                 </div>
 
 
-                <div className="products-container item-d">
+                <div className="products-container">
                     <Product
                         icon={blend1}
                         name="Herb mix 1"

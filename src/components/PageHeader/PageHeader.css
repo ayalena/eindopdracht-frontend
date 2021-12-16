@@ -1,13 +1,16 @@
 .title-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin: 30px 0;
-
 }
 
 img {
-    width: 100px;
-    margin-right: 16px;
+    width: 20%;
+    /*height: 30%;*/
+    margin-top: -50px;
+}
+
+.h1-pageheader {
+    margin-top: 15px;
 }
