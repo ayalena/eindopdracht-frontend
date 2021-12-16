@@ -1,0 +1,73 @@
+/*main {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*unused code backup js*/
+
+/*////////////////////////////////////state and function for getting next week of appointments//////////////////////////
+/*const [offsetNumber, setOffsetNumber] = useState(0);*/
+
+/*function handleNextWeek() {*/
+/*setOffsetNumber(offsetNumber + 7);*/
+/*}*/
+
+/*function handleLastWeek() {*/
+/*// console.log("current", offsetNumber);*/
+/*if (offsetNumber >= 7) {*/
+/*setOffsetNumber(offsetNumber - 7);*/
+/*} else {*/
+/*  setOffsetNumber(0);*/
+/*  }*/
+/*}*/
+
+/*useEffect(() => {*/
+/*async function fetchNextWeek() {*/
+/*try {*/
+/*//method to get data of next week*/
+/*// console.log(result.data.results);*/
+/*setWeek();*/
+/*} catch (e) {*/
+/*    console.error(e);*/
+/*}*/
+/*}*/
+
+/*if (offsetNumber !== null && offsetNumber !== undefined) {*/
+/*fetchNextWeek();*/
+/*}*/
+/*}, [offsetNumber]);*/
+
+
+/*////////////////////////////////////button to get last week and next week/////////////////////////////////////////////
+
+/*Button should trigger so that the current date is adjusted to that of the last week, as well as the time slots. If the date is set on the current week, this button should be disabled/invisible*/
+/*                <button*/
+/*                                                                                                                                                                                       type="button"*/
+/*onClick={handleLastWeek}*/
+/*disabled={offsetNumber === 0}*/
+/*>*/
+/*Last week*/
+/*                </button>*/
+
+
+/*Button should trigger so that the current date is adjusted to that of the next week, as well as the time slots*/
+/*                    <button*/
+/*type="button"*/
+/*onClick={handleNextWeek}*/
+/*>*/
+/*Next week*/
+/*                    </button>*/

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import TopMenu from './components/TopMenu/TopMenu';
 import HomePage from './pages/Home/Home';
@@ -8,16 +8,25 @@ import ContactPage from './pages/Contact/Contact';
 import BookingPage from './pages/Bookings/Bookings';
 import AgendaPage from './pages/Agenda/Agenda';
 import IntakeFormPage from './pages/IntakeForm/IntakeForm';
+import SignInPage from "./pages/SignIn/SignIn";
+import SignUpPage from "./pages/SignUp/SignUp";
+import ThanksPage from "./pages/Thanks/Thanks";
+
 
 import './App.css';
 
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
+    Route, Redirect,
 } from 'react-router-dom';
 
+import {AuthContext} from "./context/AuthContext";
+
+
 function App() {
+    const {isAuth} = useContext(AuthContext);
+
     return (
         <Router>
             <TopMenu/>
@@ -38,10 +47,19 @@ function App() {
                     <BookingPage/>
                 </Route>
                 <Route path="/agenda">
-                    <AgendaPage/>
+                    {isAuth ? <AgendaPage/> : <Redirect to="/signup"/>}
                 </Route>
                 <Route path="/intake-form">
                     <IntakeFormPage/>
+                </Route>
+                <Route exact path="/signin">
+                    <SignInPage />
+                </Route>
+                <Route exact path="/signup">
+                    <SignUpPage />
+                </Route>
+                <Route exact path="/thanks">
+                    <ThanksPage />
                 </Route>
             </Switch>
         </Router>

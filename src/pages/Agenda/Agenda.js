@@ -1,85 +1,73 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from "../../assets/logo.png";
 import TimeSlot from "../../components/TimeSlot/TimeSlot";
 import {useHistory} from "react-router-dom";
 import './Agenda.css';
+import axios from "axios";
+import {useForm} from "react-hook-form";
+import {AuthContext} from "../../context/AuthContext";
 
 function Agenda() {
+    const {register, handleSubmit, formState: {errors}, watch} = useForm();
+    const [appointments, setAppointments] = useState([]);
     const history = useHistory();
+    const {isAuth} = useContext(AuthContext);
 
-    function handleClick() {
-        history.push("/intake-form")
+
+
+    function onFormSubmit(data) {
+        console.log(data);
+        history.push("/thanks");
     }
+
+    useEffect(() => {
+        async function fetchAppointments() {
+            try {
+                const result = await axios.get(`http://localhost:8080/agenda`);
+                console.log(result.data);
+                setAppointments(result.data);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        fetchAppointments();
+    }, []);
+
+    console.log(appointments)
 
     return (
         <>
             <PageHeader icon={logo} title="Agenda"/>
             <main>
 
+                <form onSubmit={handleSubmit(onFormSubmit)}>
+                    <div className="appointment-container">
 
-                {/*Button should trigger so that the current date is adjusted to that of the last week, as well as the time slots. If the date is set on the current week, this button should be disabled/invisible*/}
-                <button type="button">
-                    Last week
-                </button>
+                        <label htmlFor="appointment">Select a date and time:</label>
 
-                <TimeSlot
-                    icon={logo}
-                    day="Monday"
-                    date="Current date: "
-                    time="Available timeslots: "
+                        {appointments.map((appointment) => {
+                            return <TimeSlot
+                                key={appointment.id}
+                                register={register}
+                                day="slot"
+                                date={appointment.dateOfAppointment}
+                                time={appointment.timeOfAppointment}
+                            />;
+                        })
+                        }
 
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Tuesday"
-                    date="Current date: "
-                    time="Available timeslots: "
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Wednesday"
-                    date="Current date: "
-                    time="Available timeslots: "
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Thursday"
-                    date="Current date: "
-                    time="Available timeslots: "
+                    </div>
 
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Friday"
-                    date="Current date: "
-                    time="Available timeslots: "
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Saturday"
-                    date="Current date: "
-                    time="Available timeslots: "
-                />
-                <TimeSlot
-                    icon={logo}
-                    day="Sunday"
-                    date="Current date: "
-                    time="Available timeslots: "
-                />
+                    <button
+                        type="submit"
+                    >
+                        Continue
+                    </button>
 
-                {/*Button should trigger so that the current date is adjusted to that of the next week, as well as the time slots*/}
-                <button type="button">
-                    Next week
-                </button>
+                </form>
             </main>
-
-            <button
-                type="button"
-                onClick={handleClick}
-            >
-                Continue
-            </button>
         </>
     );
 }

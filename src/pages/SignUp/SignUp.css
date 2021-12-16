@@ -1,13 +1,10 @@
-textarea {
-    display:block;
-}
-
-.form-container {
+.form-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*margin-top: 275px;*/
-
 }
 
+.register-button {
+    margin-left: 475px;
+}

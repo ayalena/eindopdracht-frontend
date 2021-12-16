@@ -1,40 +1,48 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');*/
-
-nav {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    justify-content: center;
-    height: 60px;
+* {
+    margin: 0;
+    padding: 0;
 }
 
+/*nav {*/
+/*    width: 100%;*/
+/*    background-color: rgb(255, 255, 255);*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    height: 60px;*/
+/*}*/
+
 .nav-container {
-    width: 1000px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 300px;
+    background: url(../../assets/header1.jpg);
+    background-size: cover;
 }
 
 ul {
     list-style-type: none;
-    flex-basis: 550px;
+    flex-basis: 1200px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .active-link {
-    border-bottom: 2px solid #8e0000;
+    border-bottom: 3px solid #8e0000;
 }
 
 li {
-    color: #8e0000;
+    color: #a41f39;
+    font-weight: bold;
 }
 
 a,
 a:visited,
 a:hover {
-    color: white;
+    color: #f10909;
     text-decoration: none;
 }
 

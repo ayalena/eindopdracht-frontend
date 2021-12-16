@@ -2,11 +2,18 @@ import React from "react";
 import './TimeSlot.css';
 
 
-function TimeSlot({day, date, time}) {
+function TimeSlot({day, date, time, register}) {
 
     return (
         <>
-            <div className="timeslot">
+            <div className="timeslot-container">
+                <label htmlFor={date}>
+                <input
+                    type="radio"
+                    id={date}
+                    value={date + time}
+                    {...register("timeslot")}
+                />
                 <h3>
                     {day}
                 </h3>
@@ -16,6 +23,7 @@ function TimeSlot({day, date, time}) {
                 <p>
                     {time}
                 </p>
+                </label>
             </div>
         </>
     );
