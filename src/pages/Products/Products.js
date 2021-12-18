@@ -18,29 +18,43 @@ function Products() {
             <div className="big-container">
 
                 <div className="description-container">
-                    <div><img src={image1} className="image1"/></div>
                     <div>
-                        <article>ABK has created multiple healthy tea blends to help boost your
-                            immune system.
+                        <img src={image1} className="image1"/>
+                    </div>
 
-                            Ab aliquid amet animi aperiam assumenda, atque autem dolorum ducimus et excepturi ipsa
-                            magnam
-                            nemo
-                            nulla
-                            possimus provident,
-                            quos ratione repellendus sed sequi tempore! Accusantium amet commodi deleniti exercitationem
-                            impedit
-                            obcaecati quis repudiandae!
-                            Ab aliquid amet animi aperiam assumenda, atque autem dolorum ducimus et excepturi ipsa
-                            magnam nemo
-                            nulla
-                            possimus provident,
-                            quos ratione repellendus sed sequi tempore! Accusantium amet commodi deleniti exercitationem
-                            impedit
-                            obcaecati quis repudiandae!
+                    <div>
+                        <article>
+                            <p>
+                                ABK has created multiple healthy tea blends to help boost your
+                                immune system.
+                            </p>
+
+                            <p>
+                                Ab aliquid amet animi aperiam assumenda, atque autem dolorum ducimus et excepturi ipsa
+                                magnam
+                                nemo
+                                nulla
+                                possimus provident,
+                                quos ratione repellendus sed sequi tempore! Accusantium amet commodi deleniti exercitationem
+                                impedit
+                                obcaecati quis repudiandae!
+                            </p>
+
+                            <p>
+                                Ab aliquid amet animi aperiam assumenda, atque autem dolorum ducimus et excepturi ipsa
+                                magnam nemo
+                                nulla
+                                possimus provident,
+                                quos ratione repellendus sed sequi tempore! Accusantium amet commodi deleniti exercitationem
+                                impedit
+                                obcaecati quis repudiandae!
+                            </p>
                         </article>
                     </div>
-                    <div><img src={image2} className="image2"/></div>
+
+                    <div>
+                        <img src={image2} className="image2"/>
+                    </div>
                 </div>
 
 
