@@ -15,11 +15,11 @@ function ContactPage() {
 
     return (
         <>
-
+            <PageHeader icon={logo} title="Contact Form"/>
             <form onSubmit={handleSubmit(onFormSubmit)}>
+
                 <div className="form-container">
 
-                    <PageHeader icon={logo} title="Contact Form"/>
                     <div>
                         <label htmlFor="first-name"> First Name </label>
                         <input
@@ -28,11 +28,11 @@ function ContactPage() {
                             {...register("firstName", {
                                 required: {
                                     value: true,
-                                    message: "Naam is verplicht",
+                                    message: "First name is required",
                                 },
                                 minLength: {
                                     value: 3,
-                                    message: "Naam moet minimaal drie karakters bevatten",
+                                    message: "Fist name has to be at least 3 characters long",
                                 },
                             })}
                         />
@@ -47,7 +47,7 @@ function ContactPage() {
                             {...register("lastName", {
                                 required: {
                                     value: true,
-                                    message: "Achternaam is verplicht"
+                                    message: "Last name is required"
                                 },
                             })}
                         />
@@ -55,34 +55,29 @@ function ContactPage() {
                     </div>
 
                     <div>
-                        <label htmlFor="age"> E-mail </label>
+                        <label htmlFor="email"> E-mail </label>
                         <input
                             type="text"
                             id="email"
                             {...register("email", {
                                 required: {
                                     value: true,
-                                    message: "Leeftijd is verplicht"
-                                },
-                                min: {
-                                    value: 18,
-                                    message: "Je moet minimaal 18 jaar zijn",
+                                    message: "Email is required"
                                 },
                             })}
                         />
-                        {errors.age && <p>{errors.age.message}</p>}
+                        {errors.age && <p>{errors.email.message}</p>}
                     </div>
 
                     <div>
-                        <label htmlFor="message"> Opmerkingen </label>
+                        <label htmlFor="message"> Message </label>
                         <textarea
                             id="message"
                             cols="30"
                             rows="10"
                             {...register(..."message")}
                         >
-
-                                </textarea>
+                        </textarea>
                     </div>
 
                     <div id="checkbox">
@@ -91,14 +86,15 @@ function ContactPage() {
                             id="terms-and-conditions"
                             {...register("terms-and-conditions")}
                         />
-                        Ik ga akkoord met de voorwaarden
+                        I agree with the terms and conditions
                     </div>
 
                     <div>
                         <button
                             type="submit"
+                            className="contact-form-button"
                         >
-                            Verstuur
+                            Send!
                         </button>
                     </div>
 

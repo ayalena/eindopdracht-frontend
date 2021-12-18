@@ -1,3 +1,4 @@
+/*phone*/
 body {
     font-family: 'Cormorant Garamond', 'Arial', sans-serif;
     background-color: #e6e6ee;
@@ -8,20 +9,18 @@ body {
 p {
     font-family: Arial, sans-serif;
     margin: 16px 0;
+
 }
 
-.colums-3 {
-    column-count: 3;
-}
+.section {
+    column-count: 1;
 
-.columns-2 {
-    column-count: 2;
 }
 
 .page-container {
-    width: 1000px;
+    width: 90%;
     margin: 60px auto;
-    /*margin-top: 275px;*/
+    text-align: center;
 }
 
 button {
@@ -32,7 +31,7 @@ button {
     height: 60px;
     color: #e6e6ee;
     transform: rotate(12deg);
-    margin-left: 875px;
+    margin-left: 440px;
 
 }
 
@@ -40,4 +39,37 @@ button:hover {
     width: 65px;
     height: 65px;
     transform: rotate(15deg);
+}
+
+
+/*tablet*/
+@media screen and (min-width: 768px) {
+
+    .section {
+        column-count: 2;
+    }
+
+    button {
+        margin-left: 475px;
+    }
+}
+
+/*laptop*/
+@media screen and (min-width: 992px) {
+
+    .section {
+        column-count: 2;
+    }
+
+    .page-container {
+        width: 1000px;
+        margin: 60px auto;
+
+    }
+
+    button {
+        margin-left: 875px;
+
+    }
+
 }

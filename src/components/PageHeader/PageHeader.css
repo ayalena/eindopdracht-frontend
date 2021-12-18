@@ -6,11 +6,20 @@
 }
 
 img {
-    width: 20%;
-    /*height: 30%;*/
+    width: 225px;
     margin-top: -50px;
 }
 
 .h1-pageheader {
     margin-top: 15px;
+}
+
+/*tablet*/
+@media screen and (min-width: 768px) {
+
+}
+
+/*laptop*/
+@media screen and (min-width: 992px) {
+
 }
