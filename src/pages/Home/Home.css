@@ -31,7 +31,8 @@ button {
     height: 60px;
     color: #e6e6ee;
     transform: rotate(12deg);
-    margin-left: 440px;
+    /*margin-left: 440px;*/
+    margin-top: 15px;
 
 }
 

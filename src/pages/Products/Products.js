@@ -8,6 +8,7 @@ import image2 from "../../assets/abk2.jpg";
 import blend1 from "../../assets/Blend 1.png";
 import blend2 from "../../assets/blend 2.png";
 import blend3 from "../../assets/Red Tea.png";
+import Footer from "../../components/Footer/Footer";
 
 
 function Products() {
@@ -23,7 +24,7 @@ function Products() {
                     </div>
 
                     <div>
-                        <article>
+                        <article className="article-container">
                             <p>
                                 ABK has created multiple healthy tea blends to help boost your
                                 immune system.
@@ -79,6 +80,7 @@ function Products() {
                     />
                 </div>
             </div>
+            <Footer/>
         </>
     );
 }

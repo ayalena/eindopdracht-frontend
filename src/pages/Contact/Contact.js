@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form'
 import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from "../../assets/logo-with-name.png";
 import './Contact.css';
+import Footer from "../../components/Footer/Footer";
 
 
 function ContactPage() {
@@ -100,7 +101,7 @@ function ContactPage() {
 
                 </div>
             </form>
-
+            <Footer/>
         </>
     );
 }

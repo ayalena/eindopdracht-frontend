@@ -5,11 +5,12 @@
 
 html, body {
     height: 100%;
+
 }
 
 body {
     font-family: 'Segoe UI', 'Arial', sans-serif;
-    background-color: #ffffff;
+    background-color: #FAF9F6;
     line-height: 1.5;
     color: #8e0000;
 }

@@ -6,26 +6,13 @@ import background from "../../assets/abkheader.png";
 function TopMenu() {
     return (
         <>
-            <div
-                className="nav-container"
-                // style={{ backgroundImage: `url(${background})` }}
-
-                >
-                {/*<h4>Acupuncture By Kim</h4>*/}
-
-
-
+            <div className="nav-container">
                 <ul>
                     <NavLink to="/" exact activeClassName="active-link">
                         <li>
                             Home
                         </li>
                     </NavLink>
-                    {/*<NavLink to="/about" activeClassName="active-link">*/}
-                    {/*    <li>*/}
-                    {/*        About*/}
-                    {/*    </li>*/}
-                    {/*</NavLink>*/}
                     <NavLink to="/contact" activeClassName="active-link">
                         <li>
                             Contact
