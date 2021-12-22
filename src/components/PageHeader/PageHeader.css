@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kolker+Brush&display=swap');
+
 .title-container {
     display: flex;
     flex-direction: column;
@@ -12,6 +14,8 @@ img {
 
 .h1-pageheader {
     margin-top: 15px;
+    font-family: 'Kolker Brush', cursive;
+    font-size: 65px;
 }
 
 /*tablet*/
