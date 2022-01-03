@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {/*useContext,*/ useEffect, useState} from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from "../../assets/logo.png";
 import TimeSlot from "../../components/TimeSlot/TimeSlot";
@@ -6,13 +6,13 @@ import {useHistory} from "react-router-dom";
 import './Agenda.css';
 import axios from "axios";
 import {useForm} from "react-hook-form";
-import {AuthContext} from "../../context/AuthContext";
+// import {AuthContext} from "../../context/AuthContext";
 
 function Agenda() {
-    const {register, handleSubmit, formState: {errors}, watch} = useForm();
+    const {register, handleSubmit, /*formState: {errors}, watch*/} = useForm();
     const [appointments, setAppointments] = useState([]);
     const history = useHistory();
-    const {isAuth} = useContext(AuthContext);
+    // const {isAuth} = useContext(AuthContext);
 
 
 

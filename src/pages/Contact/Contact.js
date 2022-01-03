@@ -7,7 +7,7 @@ import Footer from "../../components/Footer/Footer";
 
 
 function ContactPage() {
-    const {register, handleSubmit, formState: {errors}, watch} = useForm();
+    const {register, handleSubmit, formState: {errors}, /*watch*/} = useForm();
 
     function onFormSubmit(data) {
         //POST METHODE NAAR BACKEND

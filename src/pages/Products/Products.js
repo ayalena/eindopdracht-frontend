@@ -20,7 +20,7 @@ function Products() {
 
                 <div className="description-container">
                     <div>
-                        <img src={image1} className="image1"/>
+                        <img src={image1} className="image1" alt="tea-exanples-1"/>
                     </div>
 
                     <div>
@@ -54,7 +54,7 @@ function Products() {
                     </div>
 
                     <div>
-                        <img src={image2} className="image2"/>
+                        <img src={image2} className="image2" alt="tea-exanples-2"/>
                     </div>
                 </div>
 

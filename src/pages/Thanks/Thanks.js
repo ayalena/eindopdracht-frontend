@@ -11,7 +11,7 @@ function ThanksPage() {
     return (
         <>
             <PageHeader icon={logo} title="Thanks!"/>
-            <p>Thank you for booking with us! You will receive a confirmation e-mail will all the necessary info.
+            <p>Thank you for booking with us! You will receive a confirmation e-mail with all the necessary info.
             See you soon!</p>
             <p>You can log out <Link to="/" onClick={logOut} >here</Link></p>
         </>

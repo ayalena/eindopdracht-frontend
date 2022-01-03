@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './TopMenu.css';
-import background from "../../assets/abkheader.png";
 
 function TopMenu() {
     return (

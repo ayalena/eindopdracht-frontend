@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import logo from '../../assets/logo-with-name.png';
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import './Home.css';
 import Footer from "../../components/Footer/Footer";
 
