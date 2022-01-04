@@ -11,6 +11,7 @@ import IntakeFormPage from './pages/IntakeForm/IntakeForm';
 import SignInPage from "./pages/SignIn/SignIn";
 import SignUpPage from "./pages/SignUp/SignUp";
 import ThanksPage from "./pages/Thanks/Thanks";
+import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 
 
 import './App.css';
@@ -60,6 +61,9 @@ function App() {
                 </Route>
                 <Route exact path="/thanks">
                     <ThanksPage />
+                </Route>
+                <Route exact path="/userprofilepage">
+                    <UserProfilePage />
                 </Route>
             </Switch>
         </Router>

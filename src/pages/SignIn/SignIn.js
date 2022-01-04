@@ -23,7 +23,7 @@ function SignInPage() {
             })
             console.log(result.data);
             logIn(result.data.accessToken);
-            history.push("/agenda");
+            history.push("/userprofilepage");
         } catch (e) {
             console.error(e);
         }
