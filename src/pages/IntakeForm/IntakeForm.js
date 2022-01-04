@@ -3,45 +3,73 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from "../../assets/logo.png";
 import {useForm} from "react-hook-form";
 import './IntakeForm.css';
+import axios from "axios";
+import {useHistory} from "react-router-dom";
 
 
 function IntakeForm() {
     const {register, handleSubmit, formState: {errors}, watch} = useForm();
+    const history = useHistory()
+    const genderChoice = watch('gender');
 
+    async function onFormSubmit(data) {
+        //POST METHODE NAAR BACKEND USERPROFILE CONTROLLER
 
-    function onFormSubmit(data) {
-        //POST METHODE NAAR BACKEND
-        console.log(data);
+        const token = localStorage.getItem("token")
+        try {
+            await axios.post(`http://localhost:8080/api/user-profile`, {
+                // email: data.email,
+                firstName: data.firstName,
+                lastName: data.lastName,
+                age: data.age,
+                gender: data.gender,
+                address: data.address,
+                postalCode: data.postalCode,
+                phoneNumber: data.phoneNumber,
+                message: data.message,
+                sessionType: data.sessionType,
+                isPregnant: data.isPregnant,
+                hadAcu: data.hadAcu,
+                reference: data.reference,
+                isAgree: data.isAgree,
+            }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            history.push("/userprofilepage")
+        } catch (e) {
+            console.error(e)
+        }
+        onFormSubmit(data)
     }
 
-    const genderChoice = watch('gender');
 
 
     return (
         <>
+            <PageHeader icon={logo} title="Personal Info"/>
             <main>
                 <form onSubmit={handleSubmit(onFormSubmit)}>
                     <div className="form-container">
-
-                        <PageHeader icon={logo} title="Intake Form"/>
-
                         <div>
-                            <label htmlFor="age"> E-mail </label>
+                            <label htmlFor="email"> E-mail </label>
                             <input
                                 type="text"
                                 id="email"
                                 {...register("email", {
                                     required: {
                                         value: true,
-                                        message: "Leeftijd is verplicht"
+                                        message: "Please fill in your email"
                                     },
                                     min: {
-                                        value: 18,
-                                        message: "Je moet minimaal 18 jaar zijn",
+                                        // value: "has to contain an @",
+                                        message: "Please fill in a valid e-mail address",
                                     },
                                 })}
                             />
-                            {errors.age && <p>{errors.age.message}</p>}
+                            {errors.email && <p>{errors.email.message}</p>}
                         </div>
 
                         <div>
@@ -52,11 +80,11 @@ function IntakeForm() {
                                 {...register("firstName", {
                                     required: {
                                         value: true,
-                                        message: "Naam is verplicht",
+                                        message: "Please fill in your name",
                                     },
                                     minLength: {
                                         value: 3,
-                                        message: "Naam moet minimaal drie karakters bevatten",
+                                        message: "Name has to be at least 3 characters",
                                     },
                                 })}
                             />
@@ -71,7 +99,7 @@ function IntakeForm() {
                                 {...register("lastName", {
                                     required: {
                                         value: true,
-                                        message: "Achternaam is verplicht"
+                                        message: "Please fill in your last name"
                                     },
                                 })}
                             />
@@ -79,18 +107,18 @@ function IntakeForm() {
                         </div>
 
                         <div>
-                            <label htmlFor="date-of-birth"> Leeftijd </label>
+                            <label htmlFor="age"> Leeftijd </label>
                             <input
                                 type="number"
-                                id="date-of-birth"
-                                {...register("date-of-birth", {
+                                id="age"
+                                {...register("age", {
                                     required: {
                                         value: true,
-                                        message: "Leeftijd is verplicht"
+                                        message: "Please fill in your age"
                                     },
                                     min: {
                                         value: 18,
-                                        message: "Je moet minimaal 18 jaar zijn",
+                                        message: "You have to be at least 18",
                                     },
                                 })}
                             />
@@ -127,7 +155,7 @@ function IntakeForm() {
                                 {...register("address", {
                                     required: {
                                         value: true,
-                                        message: "Achternaam is verplicht"
+                                        message: "Please fill in your address"
                                     },
                                 })}
                             />
@@ -135,18 +163,18 @@ function IntakeForm() {
                         </div>
 
                         <div>
-                            <label htmlFor="postal-code"> Postcode </label>
+                            <label htmlFor="postal-code"> Postal Code </label>
                             <input
                                 type="text"
                                 id="postal-code"
                                 {...register("postalCode", {
                                     required: {
                                         value: true,
-                                        message: "Postcode is verplicht"
+                                        message: "Please fill in your postal code"
                                     },
                                     pattern: {
                                         value: /^(?:NL-)?(\d{4})\s*([A-Z]{2})$/i,
-                                        message: "Geef een geldige postcode op",
+                                        message: "Please fill in a valid postal code",
                                     },
                                 })}
                             />
@@ -154,22 +182,37 @@ function IntakeForm() {
                         </div>
 
                         <div>
+                            <label htmlFor="country"> Country </label>
+                            <input
+                                type="text"
+                                id="country"
+                                {...register("country", {
+                                    required: {
+                                        value: true,
+                                        message: "Please fill in your country"
+                                    },
+                                })}
+                            />
+                            {errors.country && <p>{errors.country.message}</p>}
+                        </div>
+
+                        <div>
                             <label htmlFor="phone-number"> Phone number </label>
                             <input
                                 type="number"
                                 id="phone-number"
-                                {...register("phone-number", {
+                                {...register("phoneNumber", {
                                     required: {
                                         value: true,
-                                        message: "Leeftijd is verplicht"
+                                        message: "Please fill in your phone number"
                                     },
                                     min: {
                                         value: 18,
-                                        message: "Je moet minimaal 18 jaar zijn",
+                                        message: "PLease fill in a valid phone number",
                                     },
                                 })}
                             />
-                            {errors.age && <p>{errors.age.message}</p>}
+                            {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
                         </div>
 
                         <div>
@@ -273,7 +316,7 @@ function IntakeForm() {
                                 id="terms-and-conditions"
                                 {...register("terms-and-conditions")}
                             />
-                            Ik ga akkoord met de voorwaarden
+                            I agree with the terms and conditions
                         </div>
                         <p>
                             GDPR
