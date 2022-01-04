@@ -48,6 +48,8 @@ function SignInPage() {
                             name="email"
                             value={emailValue}
                             onChange={(e) => setEmailValue(e.target.value)}
+
+
                         />
                     </div>
 
