@@ -1,12 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
 import './UserProfilePage.css';
 import {Link, useHistory} from "react-router-dom";
 import logo from "../../assets/logo-with-name.png";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import Footer from "../../components/Footer/Footer";
+import UserDetails from "../../components/UserDetails/UserDetails";
+import {AuthContext} from "../../context/AuthContext";
+
 
 function UserProfilePage() {
     const history = useHistory()
+    const {user} = useContext(AuthContext)
+
 
     function handleClick() {
         history.push("/intake-form")
@@ -18,9 +23,9 @@ function UserProfilePage() {
 
             <div className="profile-container">
                 <section>
-                    <h2>Information</h2>
-                    <p><strong>Username:</strong> {} </p>
-                    <p><strong>Email:</strong> hardcoded@test.com</p>
+                    <h2>Info</h2>
+                    <p><strong>Username: </strong> {} </p>
+                    <p><strong>Email:</strong> {}</p>
                 </section>
 
                 <button
@@ -30,14 +35,7 @@ function UserProfilePage() {
                 >Update info
                 </button>
 
-                <section>
-                    <h2>Profile content</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga
-                        id
-                        molestias qui quo unde?</p>
-                </section>
-                <p>To make an appointment, click <Link to="/"> here </Link></p>
-
+                <p>To make an appointment, click <Link to="/agenda"> here </Link></p>
 
 
             </div>

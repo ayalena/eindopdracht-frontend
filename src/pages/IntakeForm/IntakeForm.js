@@ -18,7 +18,7 @@ function IntakeForm() {
         const token = localStorage.getItem("token")
         try {
             await axios.post(`http://localhost:8080/api/user-profile`, {
-                // email: data.email,
+                email: data.email,
                 firstName: data.firstName,
                 lastName: data.lastName,
                 age: data.age,
