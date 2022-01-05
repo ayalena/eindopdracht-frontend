@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import './UserProfilePage.css';
 import {Link, useHistory} from "react-router-dom";
 import logo from "../../assets/logo-with-name.png";
@@ -6,12 +6,45 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import Footer from "../../components/Footer/Footer";
 import UserDetails from "../../components/UserDetails/UserDetails";
 import {AuthContext} from "../../context/AuthContext";
+import axios from "axios";
 
 
 function UserProfilePage() {
     const history = useHistory()
-    const {user} = useContext(AuthContext)
+    const {user, logOut} = useContext(AuthContext)
 
+    const [profileData, setProfileData] = useState({});
+
+    useEffect(() => {
+        const source = axios.CancelToken.source();
+
+        //get page content (mounting)
+        async function fetchProfileData() {
+            //get token to prove authorisation
+            const token = localStorage.getItem('token');
+
+            try {
+                //get request to backend
+                const result = await axios.get('http://localhost:3000/660/private-content', {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    cancelToken: source.token,
+                });
+
+                setProfileData(result.data);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        fetchProfileData();
+
+        return function cleanup() {
+            source.cancel();
+        }
+    }, [])
 
     function handleClick() {
         history.push("/intake-form")
@@ -24,8 +57,8 @@ function UserProfilePage() {
             <div className="profile-container">
                 <section>
                     <h2>Info</h2>
-                    <p><strong>Username: </strong> {} </p>
-                    <p><strong>Email:</strong> {}</p>
+                    <p><strong>Username: </strong> {user.user} </p>
+                    <p><strong>Email:</strong> {user.email}</p>
                 </section>
 
                 <button
@@ -35,9 +68,22 @@ function UserProfilePage() {
                 >Update info
                 </button>
 
+                {Object.keys(profileData).length > 0 &&
+                <section>
+                    <h2>Strikt geheime profiel-content</h2>
+                    <h3>{profileData.title}</h3>
+                    <p>{profileData.content}</p>
+                </section>
+                }
+
                 <p>To make an appointment, click <Link to="/agenda"> here </Link></p>
 
-
+                <button
+                    type="button"
+                    onClick={logOut}
+                >
+                    Log out
+                </button>
             </div>
             <Footer/>
         </>

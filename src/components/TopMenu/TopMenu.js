@@ -1,8 +1,11 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useContext} from 'react';
+import {NavLink, useHistory} from 'react-router-dom';
 import './TopMenu.css';
+import {AuthContext} from "../../context/AuthContext";
 
 function TopMenu() {
+    const { isAuth, logout } = useContext(AuthContext);
+    const history = useHistory();
     return (
         <>
             <div className="nav-container">
@@ -22,11 +25,30 @@ function TopMenu() {
                             Products
                         </li>
                     </NavLink>
+
+                    {!isAuth &&
                     <NavLink to="/signup" activeClassName="active-link">
                         <li>
                             Book Now!
                         </li>
                     </NavLink>
+                    }
+                    {isAuth &&
+                    <NavLink to="/agenda" activeClassName="active-link">
+                        <li>
+                            Book Now!
+                        </li>
+                    </NavLink>
+                    }
+
+                    {isAuth &&
+                    <NavLink to="/userprofilepage" activeClassName="active-link">
+                        <li>
+                            Profile
+                        </li>
+                    </NavLink>
+                    }
+
                 </ul>
             </div>
         </>

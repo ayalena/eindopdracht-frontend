@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './SignUp.css';
 import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
@@ -12,12 +12,19 @@ function SignUpPage() {
     // const {register, handleSubmit, formState: {errors}} = useForm({mode: 'onChange'});
 
 
+    // state for form
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const [usernameValue, setUsernameValue] = useState('');
-    const history = useHistory();
 
-    // const [error, setError] = useState(false)
+    //state for functionality
+    const history = useHistory();
+    const [error, toggleError] = useState(false)
+    const [loading, toggleLoading] = useState(false);
+
+    //cancel token for network request
+    const source = axios.CancelToken.source();
+
 
     // async function handleFormSubmit(data) {
     //     // data.preventDefault();
@@ -38,19 +45,35 @@ function SignUpPage() {
     //     }
     // }
 
+
+    // if page gets unmounted, abort request
+    useEffect(() => {
+        return function cleanup() {
+            source.cancel();
+        }
+    }, []);
+
     async function handleSubmit(e) {
         e.preventDefault();
+        toggleError(false);
+        toggleLoading(true);
+
         try {
             const result = await axios.post('http://localhost:3000/register', {
                 email: emailValue,
                 user: usernameValue,
                 password: passwordValue,
+            }, {
+                cancelToken: source.token,
             })
+
             console.log(result.data);
             history.push("/signin")
         } catch (e) {
             console.error(e);
+            toggleError(true);
         }
+        toggleLoading(false);
     }
 
     return (
@@ -117,6 +140,7 @@ function SignUpPage() {
                             value={emailValue}
                             onChange={(e) => setEmailValue(e.target.value)}
                         />
+                        {error && <p className="error"> This email is already in use.</p>}
                     </div>
 
                     <div>
@@ -139,11 +163,14 @@ function SignUpPage() {
                             value={usernameValue}
                             onChange={(e) => setUsernameValue(e.target.value)}
                         />
+                        {error && <p className="error"> This username is already in use.</p>}
+
                     </div>
 
                     <button
                         type="submit"
                         className="register-button"
+                        disabled={loading}
                     >
                         Register
                     </button>

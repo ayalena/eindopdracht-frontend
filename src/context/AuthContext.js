@@ -19,136 +19,164 @@ function AuthContextProvider ({ children }) {
 
     const history = useHistory();
 
-    const [isAdmin, setIsAdmin] = useState(false)
+    // const [isAdmin, setIsAdmin] = useState(false)
 
-    //data object, voor iedereen beschikbaar
-    // const data = {
-    //     testData: 'test-test, is this mic on?',
-    //     isAuth: isAuth.isAuth,
-    //     logIn: logIn,
-    //     logOut: logOut,
-    // }
 
-    //persist on refresh
+    // //persist on refresh
+    // useEffect(() => {
+    //     // check if there is a token is local storage
+    //     const token = localStorage.getItem('token');
+    //
+    //     // Yes: get new data and put it in state
+    //     if (token) {
+    //         const decoded = jwt_decode(token);
+    //         // getUserDetails(token, decoded);
+    //         async function getUserDetails() {
+    //             try {
+    //                 const result = await axios(`http://localhost:8080/api/users/${decoded.sub}`,
+    //                     {
+    //                         headers: {
+    //                             "Content-Type": "application/json",
+    //                             Authorization: `Bearer ${token}`
+    //                         }
+    //                     })
+    //                 // get user authentication
+    //                 const userRole = (result.data.roles[0].name)
+    //                 // if user had admin authentications, setIsAdmin to true
+    //                 if (userRole === "ROLE_ADMIN") {
+    //                     setIsAdmin(true)
+    //                 }
+    //                 toggleIsAuth({
+    //                     ...isAuth,
+    //                     isAuth: true,
+    //                     user: {
+    //                         id: result.data.id,
+    //                         email: result.data.email,
+    //                         username: result.data.username,
+    //                         role: result.data.roles[0].name,
+    //                     },
+    //                     status: "done"
+    //                 })
+    //             } catch (e) {
+    //                 localStorage.clear()
+    //                 console.error(e)
+    //             }
+    //         }
+    //         if (token) {
+    //             getUserDetails()
+    //         }
+    //     }
+    //     // No:
+    //     else {
+    //         toggleIsAuth({
+    //             ...isAuth,
+    //             isAuth: false,
+    //             user: null,
+    //             status: 'done',
+    //         });
+    //     }
+    //
+    // }, []);
+
+    // mounting
     useEffect(() => {
-        // check if there is a token is local storage
+        // get token
         const token = localStorage.getItem('token');
 
-        // Yes: get new data and put it in state
+        // get userdata
         if (token) {
             const decoded = jwt_decode(token);
-            // getUserDetails(token, decoded);
-            async function getUserDetails() {
-                try {
-                    const result = await axios(`http://localhost:8080/api/users/${decoded.sub}`,
-                        {
-                            headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${token}`
-                            }
-                        })
-                    // get user authentication
-                    const userRole = (result.data.roles[0].name)
-                    // if user had admin authentications, setIsAdmin to true
-                    if (userRole === "ROLE_ADMIN") {
-                        setIsAdmin(true)
-                    }
-                    toggleIsAuth({
-                        ...isAuth,
-                        isAuth: true,
-                        user: {
-                            id: result.data.id,
-                            email: result.data.email,
-                            username: result.data.username,
-                            role: result.data.roles[0].name,
-                        },
-                        status: "done"
-                    })
-                } catch (e) {
-                    localStorage.clear()
-                    console.error(e)
-                }
-            }
-            if (token) {
-                getUserDetails()
-            }
-        }
-        // No:
-        else {
+            getUserDetails(decoded.sub, token);
+        } else {
+            // no userdata
             toggleIsAuth({
-                ...isAuth,
                 isAuth: false,
                 user: null,
                 status: 'done',
             });
         }
-
     }, []);
 
-    // async function getUserDetails(token, decoded, pushLink) {
-    //     try {
-    //         const result = await axios.get(`http://localhost:3000/600/users/${decoded.sub}`, {
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 Authorization: `Bearer ${token}`,
-    //             }
-    //         })
-    //         console.log(result);
-    //
-    //         toggleIsAuth({
-    //             ...isAuth,
-    //             isAuth: true,
-    //             user: {
-    //                 email: result.data.email,
-    //                 id: result.data.id,
-    //                 user: result.data.user,
-    //             },
-    //             status: 'done',
-    //         });
-    //         if(pushLink) {
-    //             history.push(pushLink);
-    //         }
-    //     } catch (e) {
-    //         console.error(e);
-    //     }
-    // }
 
-    async function logIn(token) {
-        // const decoded = jwt_decode(token);
-        // localStorage.setItem('token', token);
-        // console.log(decoded);
-        // getUserDetails(token, decoded, "/agenda");
-        // console.log("User logged in");
-        localStorage.setItem("token", token)
-        const decoded = jwt_decode(token)
-
+    //use this function in login- and mounting-effect
+    async function getUserDetails(id, token, pushLink) {
         try {
-            const result = await axios(`http://localhost:8080/api/users/${decoded.sub}`,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`
-                    }
-                })
+            //get userdata with the token and ID of user
+            const result = await axios.get(`http://localhost:3000/600/users/${id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            })
+            console.log(result);
 
+            //put it in state
             toggleIsAuth({
                 ...isAuth,
                 isAuth: true,
                 user: {
-                    id: result.data.id,
                     email: result.data.email,
-                    username: result.data.username,
+                    id: result.data.id,
+                    user: result.data.user,
                 },
-                status: "done"
-            })
-            if (result.data.roles[0].name === "ROLE_ADMIN") {
-                setIsAdmin(true)
+                status: 'done',
+            });
+            //if there is a redirect url (not with mount-effect)
+            if(pushLink) {
+                history.push(pushLink);
             }
         } catch (e) {
-            console.error(e)
+            console.error(e);
+            //no data in state
+            toggleIsAuth({
+                isAuth: false,
+                user: null,
+                status: 'done',
+            });
         }
-        history.push("/agenda")
-        console.log("User is logged in, agenda now available")
+    }
+
+    function logIn(token) {
+        //put token in local storage
+        localStorage.setItem('token', token);
+        //decode it to get id of user and data for context
+        const decoded = jwt_decode(token);
+        console.log(decoded);
+
+        //give id token and pushlink to function
+        getUserDetails(decoded.sub, token, "/agenda");
+        console.log("User logged in");
+
+        // localStorage.setItem("token", token)
+        // const decoded = jwt_decode(token)
+        //
+        // try {
+        //     const result = await axios(`http://localhost:8080/api/users/${decoded.sub}`,
+        //         {
+        //             headers: {
+        //                 "Content-Type": "application/json",
+        //                 Authorization: `Bearer ${token}`
+        //             }
+        //         })
+        //
+        //     toggleIsAuth({
+        //         ...isAuth,
+        //         isAuth: true,
+        //         user: {
+        //             id: result.data.id,
+        //             email: result.data.email,
+        //             username: result.data.username,
+        //         },
+        //         status: "done"
+        //     })
+        //     if (result.data.roles[0].name === "ROLE_ADMIN") {
+        //         setIsAdmin(true)
+        //     }
+        // } catch (e) {
+        //     console.error(e)
+        // }
+        // history.push("/agenda")
+        // console.log("User is logged in, agenda now available")
 
     }
 
@@ -156,29 +184,30 @@ function AuthContextProvider ({ children }) {
         //take token out of storage
         localStorage.clear();
 
+        //take data out of state
         toggleIsAuth({
             ...isAuth,
             isAuth: false,
             user: null,
             status: "done"
         });
-        setIsAdmin(false)
+        // setIsAdmin(false)
         console.log("User logged out")
         history.push("/")
     }
 
     const data = {
-        ...isAuth,
+        isAuth: isAuth.isAuth,
+        user: isAuth.user,
         logIn,
         logOut,
-        isAdmin,
+        // isAdmin,
     }
 
-    //wrap it in a provider, value is data object
+    //wrap it in a provider, value is the data object
     return (
         <AuthContext.Provider value={data}>
             {isAuth.status === 'done' ? children : <p>Loading...</p>}
-            {/*{children}*/}
         </AuthContext.Provider>
     )
 

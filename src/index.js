@@ -11,9 +11,9 @@ ReactDOM.render(
     <React.StrictMode>
         <Router>
             <AuthContextProvider>
-                <ProfileContextProvider>
+                {/*<ProfileContextProvider>*/}
                     <App/>
-                </ProfileContextProvider>
+                {/*</ProfileContextProvider>*/}
             </AuthContextProvider>
         </Router>
     </React.StrictMode>,

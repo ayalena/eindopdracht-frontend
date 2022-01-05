@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import './SignIn.css';
 import {AuthContext} from "../../context/AuthContext";
 import {Link, useHistory} from "react-router-dom";
@@ -10,22 +10,38 @@ import Footer from "../../components/Footer/Footer";
 function SignInPage() {
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
+    const [error, toggleError] = useState(false);
+
     const {logIn} = useContext(AuthContext);
     const history = useHistory();
+    const source = axios.CancelToken.source();
 
+    // if page gets unmounted, abort request
+    useEffect(() => {
+        return function cleanup() {
+            source.cancel();
+        }
+    }, []);
 
     async function handleSubmit(e) {
         e.preventDefault();
+        toggleError(false);
         try {
             const result = await axios.post('http://localhost:3000/login', {
                 email: emailValue,
                 password: passwordValue,
+            }, {
+                cancelToken: source.token,
             })
+            //display result
             console.log(result.data);
+            //pass token to login function from context
             logIn(result.data.accessToken);
+            //push to profile page
             history.push("/userprofilepage");
         } catch (e) {
             console.error(e);
+            toggleError(true);
         }
     }
 
@@ -63,6 +79,8 @@ function SignInPage() {
                             onChange={(e) => setPasswordValue(e.target.value)}
                         />
                     </div>
+
+                    {error && <p className="error">Email or password is wrong</p>}
 
                     <button
                         type="submit"
