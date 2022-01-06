@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
-import {NavLink, useHistory} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import './TopMenu.css';
 import {AuthContext} from "../../context/AuthContext";
 
 function TopMenu() {
-    const { isAuth, logout } = useContext(AuthContext);
-    const history = useHistory();
+    const { isAuth, logOut } = useContext(AuthContext);
+
     return (
         <>
             <div className="nav-container">
@@ -45,6 +45,14 @@ function TopMenu() {
                     <NavLink to="/userprofilepage" activeClassName="active-link">
                         <li>
                             Profile
+                        </li>
+                    </NavLink>
+                    }
+
+                    {isAuth &&
+                    <NavLink to="/" activeClassName="active-link" onClick={logOut}>
+                        <li>
+                            Log Out
                         </li>
                     </NavLink>
                     }

@@ -7,11 +7,14 @@ import Footer from "../../components/Footer/Footer";
 import UserDetails from "../../components/UserDetails/UserDetails";
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
+import {ProfileContext} from "../../context/ProfileContext";
 
 
 function UserProfilePage() {
     const history = useHistory()
     const {user, logOut} = useContext(AuthContext)
+    const {userProfile, loading} = useContext(ProfileContext)
+
 
     const [profileData, setProfileData] = useState({});
 
@@ -24,7 +27,7 @@ function UserProfilePage() {
             const token = localStorage.getItem('token');
 
             try {
-                //get request to backend
+                //get request to backend to get user file (doesn't exist yet)
                 const result = await axios.get('http://localhost:3000/660/private-content', {
                     headers: {
                         "Content-Type": "application/json",
@@ -57,7 +60,7 @@ function UserProfilePage() {
             <div className="profile-container">
                 <section>
                     <h2>Info</h2>
-                    <p><strong>Username: </strong> {user.user} </p>
+                    <p><strong>Username: </strong> {user.username} </p>
                     <p><strong>Email:</strong> {user.email}</p>
                 </section>
 

@@ -144,7 +144,7 @@ function AuthContextProvider ({ children }) {
         console.log(decoded);
 
         //give id token and pushlink to function
-        getUserDetails(decoded.sub, token, "/agenda");
+        getUserDetails(decoded.sub, token, "/userprofilepage");
         console.log("User logged in");
 
         // localStorage.setItem("token", token)
