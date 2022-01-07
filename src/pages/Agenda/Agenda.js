@@ -62,6 +62,7 @@ function Agenda() {
 
                     <button
                         type="submit"
+                        className="round-button"
                     >
                         Continue
                     </button>

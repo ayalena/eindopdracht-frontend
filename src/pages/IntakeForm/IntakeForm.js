@@ -1,13 +1,14 @@
-import React from "react";
+import React, {Component} from "react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from "../../assets/logo.png";
 import {useForm} from "react-hook-form";
 import './IntakeForm.css';
 import axios from "axios";
 import {useHistory} from "react-router-dom";
+import FileUpload from "../../components/FileUpload/FileUpload";
 
 
-function IntakeForm() {
+function IntakeForm(){
     const {register, handleSubmit, formState: {errors}, watch} = useForm();
     const history = useHistory()
     const genderChoice = watch('gender');
@@ -225,6 +226,13 @@ function IntakeForm() {
                             >
 
                                 </textarea>
+                        </div>
+
+                        <div>
+                            <label htmlFor="file"> Add a file</label>
+                            <FileUpload
+                                {...register(..."file")}
+                            />
                         </div>
 
                         {/*dit miss beter als multiple choice?*/}

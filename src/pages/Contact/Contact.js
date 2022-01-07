@@ -4,6 +4,7 @@ import PageHeader from "../../components/PageHeader/PageHeader";
 import logo from "../../assets/logo-with-name.png";
 import './Contact.css';
 import Footer from "../../components/Footer/Footer";
+import FileUpload from "../../components/FileUpload/FileUpload";
 
 
 function ContactPage() {
@@ -81,6 +82,13 @@ function ContactPage() {
                         </textarea>
                     </div>
 
+                    <div>
+                        <label htmlFor="file"> Add a file</label>
+                        <FileUpload
+                            {...register(..."file")}
+                        />
+                    </div>
+
                     <div id="checkbox">
                         <input
                             type="checkbox"
@@ -93,7 +101,7 @@ function ContactPage() {
                     <div>
                         <button
                             type="submit"
-                            className="contact-form-button"
+                            className="round-button"
                         >
                             Send!
                         </button>

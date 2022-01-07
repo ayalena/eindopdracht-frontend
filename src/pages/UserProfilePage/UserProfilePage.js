@@ -60,7 +60,7 @@ function UserProfilePage() {
             <div className="profile-container">
                 <section>
                     <h2>Info</h2>
-                    <p><strong>Username: </strong> {user.username} </p>
+                    {/*<p><strong>Username: </strong> {user.username} </p>*/}
                     <p><strong>Email:</strong> {user.email}</p>
                 </section>
 
@@ -84,6 +84,7 @@ function UserProfilePage() {
                 <button
                     type="button"
                     onClick={logOut}
+                    className="round-button"
                 >
                     Log out
                 </button>

@@ -70,6 +70,7 @@ function HomePage() {
                 </section>
 
                 <button
+                    className="round-button"
                     type="button"
                     onClick={handleClick}
                 >
