@@ -82,12 +82,12 @@ function ContactPage() {
                         </textarea>
                     </div>
 
-                    <div>
-                        <label htmlFor="file"> Add a file</label>
-                        <FileUpload
-                            {...register(..."file")}
-                        />
-                    </div>
+                    {/*<div>*/}
+                    {/*    <label htmlFor="file"> Add a file</label>*/}
+                    {/*    <FileUpload*/}
+                    {/*        {...register(..."file")}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
 
                     <div id="checkbox">
                         <input

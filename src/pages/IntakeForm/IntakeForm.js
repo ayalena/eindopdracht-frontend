@@ -6,6 +6,7 @@ import './IntakeForm.css';
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import FileUpload from "../../components/FileUpload/FileUpload";
+import Footer from "../../components/Footer/Footer";
 
 
 function IntakeForm(){
@@ -229,7 +230,6 @@ function IntakeForm(){
                         </div>
 
                         <div>
-                            <label htmlFor="file"> Add a file</label>
                             <FileUpload
                                 {...register(..."file")}
                             />
@@ -338,6 +338,7 @@ function IntakeForm(){
                         <div>
                             <button
                                 type="submit"
+                                className="round-button"
                             >
                                 Send
                             </button>
@@ -346,6 +347,8 @@ function IntakeForm(){
                     </div>
                 </form>
             </main>
+
+            <Footer/>
         </>
     );
 }

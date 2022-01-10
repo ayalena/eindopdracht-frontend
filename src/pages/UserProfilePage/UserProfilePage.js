@@ -61,7 +61,7 @@ function UserProfilePage() {
                 <section>
                     <h2>Info</h2>
                     {/*<p><strong>Username: </strong> {user.username} </p>*/}
-                    <p><strong>Email:</strong> {user.email}</p>
+                    {/*<p><strong>Email:</strong> {user.email}</p>*/}
                 </section>
 
                 <button

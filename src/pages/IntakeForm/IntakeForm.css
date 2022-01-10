@@ -24,3 +24,8 @@ input {
     margin: 5px;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

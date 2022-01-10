@@ -4,7 +4,7 @@ import "./FileUpload.css"
 import {uploadFile} from "../../services/FileUploadService";
 import {useHistory} from "react-router-dom";
 import fileUpload from "../../assets/uploadimage.jpg"
-import { MdOutlineCloudUpload } from "react-icons/md"
+import {MdOutlineFileUpload} from "react-icons/md"
 
 function FileUpload() {
     const [selectedFiles, setSelectedFiles] = useState(undefined);
@@ -28,7 +28,7 @@ function FileUpload() {
 
         uploadFile(currentFile, (event) => {
             setProgress(Math.round((100 * event.loaded) / event.total));
-            setMessage("File upload successfull")
+            setMessage("File upload successful")
         })
             .catch(() => {
                 setProgress(0);
@@ -47,52 +47,53 @@ function FileUpload() {
                     <section>
 
                         <div className="dropzone" {...getRootProps()}>
-                            <img
-                                className="file-upload-logo"
-                                src={fileUpload}
-                                alt="file-upload-image"
-                            />
+                            {/*<img*/}
+                            {/*    className="file-upload-logo"*/}
+                            {/*    src={fileUpload}*/}
+                            {/*    alt="file-upload-image"*/}
+                            {/*/>*/}
+                            <label htmlFor="file-upload">Upload a file (optional) : </label>
                             <input {...getInputProps()} />
                             {selectedFiles && selectedFiles[0].name ? (
                                 <div className="selected-file">
                                     {selectedFiles && selectedFiles[0].name}
                                 </div>
                             ) : (
-                                <div className="file-upload-text">Drag and drop file here, <br/> <MdOutlineCloudUpload className="file-upload-icon"/>
-                                    or click to upload file
-                                    <p className="file-upload-small-text">(Only *.jpeg or *.png images will be accepted, with a maximum of XX MB)</p>
+                                <div className="file-upload-text"> Upload <br/>
+                                    <MdOutlineFileUpload className="file-upload-icon"/>
                                 </div>
+
+
                             )}
+
+                            {/*<button*/}
+                            {/*    className="file-upload-button"*/}
+                            {/*    disabled={!selectedFiles}*/}
+                            {/*    onClick={() => upload()}*/}
+                            {/*>*/}
+                            {/*    Upload*/}
+                            {/*</button>*/}
                         </div>
 
-                        <aside className="selected-file-wrapper">
-                            <button
-                                className="file-upload-button"
-                                disabled={!selectedFiles}
-                                onClick={() => upload()}
-                            >
-                                Upload
-                            </button>
-                        </aside>
 
                     </section>
                 )}
             </Dropzone>
 
-            <div>
-                <div className="alert-light"
-                     role="alert"
-                >
-                    {message}
-                </div>
+            {/*<div>*/}
+            {/*    <div className="alert-light"*/}
+            {/*         role="alert"*/}
+            {/*    >*/}
+            {/*        {message}*/}
+            {/*    </div>*/}
 
-                {progress === 100 &&
-                <button
-                    className="userpage-button"
-                    onClick={() => history.push("/userprofilepage")}
-                >Back to profile</button>
-                }
-            </div>
+            {/*    {progress === 100 &&*/}
+            {/*    <button*/}
+            {/*        className="userpage-button"*/}
+            {/*        onClick={() => history.push("/userprofilepage")}*/}
+            {/*    >Back to profile</button>*/}
+            {/*    }*/}
+            {/*</div>*/}
 
         </div>
     )
