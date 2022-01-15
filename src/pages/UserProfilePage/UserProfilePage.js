@@ -15,8 +15,9 @@ function UserProfilePage() {
     const {user, logOut} = useContext(AuthContext)
     const {userProfile, loading} = useContext(ProfileContext)
 
-
     const [profileData, setProfileData] = useState({});
+
+    const token = localStorage.getItem("token")
 
     useEffect(() => {
         const source = axios.CancelToken.source();
