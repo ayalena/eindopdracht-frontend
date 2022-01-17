@@ -8,7 +8,7 @@ import logo from "../../assets/logo-with-name.png";
 import Footer from "../../components/Footer/Footer";
 
 function SignInPage() {
-    const [emailValue, setEmailValue] = useState('');
+    const [usernameValue, setUsernameValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const [error, toggleError] = useState(false);
 
@@ -23,12 +23,13 @@ function SignInPage() {
         }
     }, []);
 
+    //custom server
     async function handleSubmit(e) {
         e.preventDefault();
         toggleError(false);
         try {
-            const result = await axios.post('http://localhost:3000/login', {
-                email: emailValue,
+            const result = await axios.post("http://localhost:8080/api/auth/signin", {
+                username: usernameValue,
                 password: passwordValue,
             }, {
                 cancelToken: source.token,
@@ -45,6 +46,29 @@ function SignInPage() {
         }
     }
 
+    //fake server
+    // async function handleSubmit(e) {
+    //     e.preventDefault();
+    //     toggleError(false);
+    //     try {
+    //         const result = await axios.post('http://localhost:3000/login', {
+    //             email: emailValue,
+    //             password: passwordValue,
+    //         }, {
+    //             cancelToken: source.token,
+    //         })
+    //         //display result
+    //         console.log(result.data);
+    //         //pass token to login function from context
+    //         logIn(result.data.accessToken);
+    //         //push to profile page
+    //         history.push("/userprofilepage");
+    //     } catch (e) {
+    //         console.error(e);
+    //         toggleError(true);
+    //     }
+    // }
+
 
     return (
         <>
@@ -57,15 +81,13 @@ function SignInPage() {
 
 
                     <div>
-                        <label htmlFor="email"> E-mail: </label>
+                        <label htmlFor="username"> Username: </label>
                         <input
                             type="text"
                             placeholder=""
-                            name="email"
-                            value={emailValue}
-                            onChange={(e) => setEmailValue(e.target.value)}
-
-
+                            name="username"
+                            value={usernameValue}
+                            onChange={(e) => setUsernameValue(e.target.value)}
                         />
                     </div>
 
@@ -80,11 +102,12 @@ function SignInPage() {
                         />
                     </div>
 
-                    {error && <p className="error">Email or password is wrong</p>}
+                    {error && <p className="error">Username or password is wrong</p>}
 
                     <button
                         type="submit"
                         className="login-button"
+
                     >
                         Log in
                     </button>

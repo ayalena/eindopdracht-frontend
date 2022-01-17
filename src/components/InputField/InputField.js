@@ -1,5 +1,5 @@
 import React from "react";
-import './InputField.css;
+import './InputField.css';
 
 function InputField({
                         type,
@@ -14,8 +14,8 @@ function InputField({
                         maxLength,
                         maxLengthMessage,
                         errors,
-                        // patternValue,
-                        // patternMessage,
+                        patternValue,
+                        patternMessage,
                     }) {
 
     return (
@@ -36,10 +36,10 @@ function InputField({
                                value: maxLength,
                                message: maxLengthMessage
                            },
-                           // pattern: {
-                           //     value: patternValue,
-                           //     message: patternMessage,
-                           // },
+                           pattern: {
+                               value: patternValue,
+                               message: patternMessage,
+                           },
                        },
                    )}
             />
